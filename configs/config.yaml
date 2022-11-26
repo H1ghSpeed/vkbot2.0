@@ -1,0 +1,8 @@
+general:
+  token: 
+  group_name: mysli110
+  dir_name: 
+  logo: data/logotip_mysli.png
+  offset: 100
+  circles: 1
+  ver_api: 5.131
