@@ -1,0 +1,4 @@
+data/
+configs/
+__pycache__/
+parse.py

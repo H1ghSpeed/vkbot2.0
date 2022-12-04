@@ -2,7 +2,7 @@ import addict
 import yaml
 import numpy as np
 import cv2 as cv
-import os
+import os, shutil
 import asyncio
 
 def get_data_from_yaml(filename):
@@ -10,6 +10,11 @@ def get_data_from_yaml(filename):
         data = yaml.safe_load(stream)
     data = addict.Dict(data)
     return data
+
+def delete_after_upload(path:str, posts_id: list):
+    for item in posts_id:
+        shutil.rmtree(os.path.join(path, 'images', item))
+        os.remove(os.path.join(path, 'text', f'{item}.txt'))
 
 class Wotemark:
     def __init__(self, logo):

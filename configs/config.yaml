@@ -1,8 +1,10 @@
 general:
   token: 
-  group_name: 
-  dir_name: 
+  group_name: deti_tmij
+  dir_name: godless_dependence
   logo: data/logotip_deti.png
-  offset: 100
-  circles: 3
+  offset: 0
+  circles: 4
   ver_api: 5.131
+  stop_slova: источник,https,http,club
+  wotemark: True

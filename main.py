@@ -8,22 +8,18 @@ import time
 def main(args):
     config = get_data_from_yaml(args.config)
     parse = Parse(config)
+    parse.start()
 
-    for i in tqdm(range(config.general.circles)):
-        parse.start()
-        config.general.offset += 200
-
-    if args.wotemark:
+    if config.general.wotemark:
         wotemark = Wotemark(config.general.logo)
         for post in os.listdir(f'data/{config.general.group_name}/images'):
             path  = f'data/{config.general.group_name}/images/{post}'
-            for item in os.listdir(f'data/{config.general.group_name}/images/{post}'):
+            for item in tqdm(os.listdir(f'data/{config.general.group_name}/images/{post}'), position=0, leave=False):
                 wotemark.wotermark(os.path.join(path, item), path, item)
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--config', type=str, default='configs/config.yaml', help='Путь до конфиг файла')
-    parser.add_argument('--wotemark', type=bool, default=True, help='Добавление водяного знака.')
     args = parser.parse_args()
     start_time = time.time()
     main(args)
